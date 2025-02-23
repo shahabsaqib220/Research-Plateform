@@ -48,8 +48,6 @@ app.use('/api/v1/groupmember/research', GroupMemberContribution);
 
 app.use(errorHandler);
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+
 
 module.exports = app;
