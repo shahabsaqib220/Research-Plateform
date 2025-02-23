@@ -29,6 +29,7 @@ app.use(cors({
 }));
 
 const PORT = 5000;
+app.use(errorHandler);
 
 
 connectDB();
@@ -52,7 +53,7 @@ app.use('/api/v1/member', groupMemberLoginRouter);
 app.use('/api/v1/check/research', checkReseachInformationRouter);
 app.use('/api/v1/groupmember/research', GroupMemberContribution);
 
-app.use(errorHandler);
+
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
