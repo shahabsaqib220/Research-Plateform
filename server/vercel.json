@@ -8,11 +8,14 @@
   ],
   "routes": [
     {
-      "src": "/(.*)",           "dest": "server/index.js"
+      "src": "/(.*)",          
+      "dest": "server/index.js" 
     }
   ],
   "rewrites": [
     {
-      "source": "/(.*)",       "destination": "/server/index.js"     }
+      "source": "/(.*)",       
+      "destination": "/server/index.js" 
+    }
   ]
 }
