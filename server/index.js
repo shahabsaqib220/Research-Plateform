@@ -15,4 +15,10 @@ app.get("/", (req, res) => {
 });
 
 // Instead of `app.listen()`, EXPORT the app
+
+
+
+
+console.log("MONGO_URI", process.env.MONGO_URI);
+
 module.exports = app;
