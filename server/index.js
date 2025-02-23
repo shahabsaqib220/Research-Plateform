@@ -15,8 +15,6 @@ const groupMemberLoginRouter = require('./modules/group-member-login/router');
 const GroupMemberContribution = require("./modules/group-member-contributions/router")
 const checkReseachInformationRouter = require('./modules/check-group-information/router');
 dotenv.config();
-const { broadcastMessage, wss } = require('./websocketServer'); // Import WebSocket utilities
-const WebSocket = require('ws');
 
 const app = express();
 app.use(bodyParser.json());
@@ -28,15 +26,15 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization'], // Specify allowed headers
 }));
 
-const PORT = 5000;
-
+// Use process.env.PORT for Vercel, fallback to 5000 for local development
+const PORT = process.env.PORT || 5000;
 
 connectDB();
 const { upload, gfs } = initGridFS();
 
-wss.on('connection', (ws) => {
-  console.log('WebSocket Client connected');
-});
+app.get("/", (req, res) => {
+  res.send("Welcome to the research application");
+})
 
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/login', userLoginRouter);
@@ -50,6 +48,5 @@ app.use('/api/v1/groupmember/research', GroupMemberContribution);
 app.use(errorHandler);
 
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-  console.log(`WebSocket Server running on port 8080`);
+  console.log(`Server running on port ${PORT}`);
 });
