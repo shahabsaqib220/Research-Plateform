@@ -55,9 +55,4 @@ app.use('/api/v1/groupmember/research', GroupMemberContribution);
 
 
 
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-  console.log(`WebSocket Server running on port 8080`);
-});
-
-module.exports = app; 
+module.exports = app;
