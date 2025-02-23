@@ -15,34 +15,29 @@ const groupMemberLoginRouter = require('./modules/group-member-login/router');
 const GroupMemberContribution = require("./modules/group-member-contributions/router")
 const checkReseachInformationRouter = require('./modules/check-group-information/router');
 dotenv.config();
-const { broadcastMessage, wss } = require('./websocketServer'); // Import WebSocket utilities
-const WebSocket = require('ws');
 
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
+// Configure CORS properly for Vercel
 app.use(cors({
-  origin: 'http://localhost:3000', // Replace with your frontend's origin
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed HTTP methods
-  allowedHeaders: ['Content-Type', 'Authorization'], // Specify allowed headers
+  origin: '*', // Change this to your frontend domain in production
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
 }));
-
-const PORT = 5000;
-
 
 connectDB();
 const { upload, gfs } = initGridFS();
 
-wss.on('connection', (ws) => {
-  console.log('WebSocket Client connected');
-});
+// ✅ Remove WebSocket logic (Vercel does not support WebSockets)
 
-
+// ✅ Add default route for testing
 app.get("/", (req, res) => {
   res.send("Hello from Express!");
 });
 
+// ✅ Define API Routes
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/login', userLoginRouter);
 app.use('/api/v1/password', userResetPasswordRouter);
@@ -52,7 +47,11 @@ app.use('/api/v1/member', groupMemberLoginRouter);
 app.use('/api/v1/check/research', checkReseachInformationRouter);
 app.use('/api/v1/groupmember/research', GroupMemberContribution);
 
+// ✅ Global Error Handler
 app.use(errorHandler);
 
+// ❌ REMOVE app.listen() – Vercel does not need this
+// ❌ REMOVE WebSocket server setup
 
-module.exports = app; 
+// ✅ Export Express app for Vercel
+module.exports = app;
