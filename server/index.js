@@ -38,6 +38,11 @@ wss.on('connection', (ws) => {
   console.log('WebSocket Client connected');
 });
 
+
+app.get("/", (req, res) => {
+  res.send("Hello from Express!");
+});
+
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/login', userLoginRouter);
 app.use('/api/v1/password', userResetPasswordRouter);
@@ -49,7 +54,5 @@ app.use('/api/v1/groupmember/research', GroupMemberContribution);
 
 app.use(errorHandler);
 
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-  console.log(`WebSocket Server running on port 8080`);
-});
+
+module.exports = app; 
