@@ -46,7 +46,6 @@ app.use('/api/v1/check/research', checkReseachInformationRouter);
 app.use('/api/v1/groupmember/research', GroupMemberContribution);
 
 app.use(errorHandler);
-
-
-
 module.exports = app;
+
+
