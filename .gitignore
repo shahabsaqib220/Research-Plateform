@@ -9,7 +9,7 @@ server/.env
 client/.env
 
 # Ignore Firebase service account
-server/configurations/firebase_Configuration/serviceAccount.json
+
 
 # Ignore logs and cache
 *.log
