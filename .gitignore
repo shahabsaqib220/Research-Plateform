@@ -1,0 +1,24 @@
+# Ignore Node.js dependencies
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Ignore environment files
+.env
+server/.env
+client/.env
+
+# Ignore Firebase service account
+server/configurations/firebase_Configuration/serviceAccount.json
+
+# Ignore logs and cache
+*.log
+yarn-error.log
+npm-debug.log
+client/.next/
+server/.next/
+
+# Ignore build files
+client/build/
+server/build/
+dist/
