@@ -7,6 +7,7 @@ import { FaUser , FaBook, FaResearchgate, FaBars } from "react-icons/fa";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import GroupMemberContributions from "@/components/GroupMemberContributions";
+import PersonalPublicationForm from "@/components/GroupMemberPersonalPublications";
 
 
 export default function Dashboard() {
@@ -16,7 +17,8 @@ export default function Dashboard() {
   const menuItems = [
     { name: "Profile", icon: <FaUser  /> },
     { name: "Education", icon: <FaBook /> },
-    { name: "Contributions and Personal Publications", icon: <FaResearchgate /> },
+    { name: "Contributions", icon: <FaResearchgate /> },
+    { name: "Personal Publications", icon: <FaResearchgate /> },
   ];
 
   // Dynamically render the selected component
@@ -26,8 +28,10 @@ export default function Dashboard() {
         return <div className="p-6"><GroupMemberDashboardProfile /></div>;
       case "Education":
         return <div className="p-6"><EducationalBackground /></div>; // Ensure the component returns valid JSX
-      case "Contributions and Personal Publications":
+      case "Contributions":
         return <div className="p-6"><GroupMemberContributions/></div>;
+      case "Personal Publications":
+        return <div className="p-6"><PersonalPublicationForm/></div>;
       default:
         return null;
     }

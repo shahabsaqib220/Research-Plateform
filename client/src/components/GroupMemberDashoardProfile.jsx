@@ -213,7 +213,7 @@ const GroupMemberDashboardProfile = () => {
 
   return (
     <>
-      <Box sx={{ p: { xs: 2, sm: 3 }, maxWidth: '1200px', mx: 'auto', pb: 8 }}>
+      <Box>
               
         <Grid container spacing={4}>
           {/* Profile Card */}
